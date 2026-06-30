@@ -9,7 +9,7 @@ const Logo = ({
 }) => {
   return (
     <Image
-      src={light ? "/logo/logo-white.png" : "/logo/logo.webp"}
+      src={light ? "/logo/logo-white.webp" : "/logo/logo.webp"}
       width={150}
       height={150}
       alt={"Dag-Chain Logo"}

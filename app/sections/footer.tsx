@@ -219,7 +219,7 @@ export default function Footer() {
         <div className="border-t  border-white/10 bg-[#0f0b22]">
           <div className=" flex container py-10 flex-col md:flex-row items-start justify-between gap-10">
             <div ref={logoRef}>
-              <Logo light className="w-44" />
+              <Logo light  />
             </div>
 
             <div className="">

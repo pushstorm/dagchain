@@ -47,7 +47,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="container">
+    <section id={"hero"} className="container">
       <div
         ref={boxRef}
         className="h-[55dvh] lg:h-[88dvh] w-full overflow-hidden relative"

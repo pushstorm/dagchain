@@ -54,6 +54,7 @@ const TextDescription = () => {
 
   return (
     <section
+    id={"join-dag"}
       ref={sectionRef}
       className="container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 mt-8"
     >

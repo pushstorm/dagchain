@@ -139,7 +139,7 @@ export default function ThemeTable() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section id={'ecosystem'} ref={sectionRef} className="py-24 bg-white">
       <div className="container mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">

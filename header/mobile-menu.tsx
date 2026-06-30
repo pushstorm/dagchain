@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { List, X } from "@phosphor-icons/react";
+import { List, X, XIcon } from "@phosphor-icons/react";
 import gsap from "gsap";
 import { menuLinks } from "./header";
 import { StepperForm } from "@/components/stepper-form";
@@ -137,6 +137,13 @@ const MobileMenu = () => {
     });
   };
 
+  const scrollToSection = (href: string) => {
+    const el = document.querySelector(href);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
   return (
     <>
       <button
@@ -199,14 +206,17 @@ const MobileMenu = () => {
                   className="w-8 h-8 flex items-center justify-center rounded-lg text-neutral-500 hover:bg-gray-100 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X size={18} weight="bold" />
+                  <XIcon size={18} weight="bold" />
                 </button>
               </div>
               <div ref={linksRef} className="flex flex-col gap-1 p-4 flex-1">
                 {menuLinks.map((item, idx) => (
                   <button
                     key={idx}
-                    onClick={() => closeMenu()}
+                    onClick={() => {
+                      closeMenu();
+                      scrollToSection(item.link);
+                    }}
                     className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-neutral-700"
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLButtonElement).style.background =

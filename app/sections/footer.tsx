@@ -17,7 +17,12 @@ import Logo from "@/logo/logo";
 import { StepperForm } from "@/components/stepper-form";
 
 gsap.registerPlugin(ScrollTrigger);
-
+const scrollToSection = (href: string) => {
+  const el = document.querySelector(href);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 72;
+  window.scrollTo({ top, behavior: "smooth" });
+};
 function RevealLine({
   children,
   delay = 0,
@@ -79,9 +84,9 @@ const SOCIALS = [
 ];
 
 const LEGAL = [
-  { label: "Overview", href: "#" },
-  { label: "Why Join Dag Chain", href: "#" },
-  { label: "Be a Part of the Ecosystem", href: "#" },
+  { label: "Overview", link: "#hero" },
+  { label: "Why Join Dag Chain", link: "#join-dag" },
+  { label: "Be a Part of the Ecosystem", link: "#ecosystem" },
 ];
 
 export default function Footer() {
@@ -254,13 +259,13 @@ export default function Footer() {
         <div className=" border-t border-white/10">
           <div
             ref={legalRef}
-            className="px-8 sm:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3"
+            className=" container py-5 flex flex-col sm:flex-row items-center justify-between gap-3"
           >
             <div className="flex flex-wrap items-center gap-6">
-              {LEGAL.map(({ label, href }) => (
-                <Link
+              {LEGAL.map(({ label, link }) => (
+                <button
                   key={label}
-                  href={href}
+                  onClick={() => scrollToSection(link)}
                   className="text-[12px] text-white/30 flex items-center gap-2 transition-colors duration-150 hover:text-white/60"
                 >
                   <CircleIcon
@@ -268,10 +273,10 @@ export default function Footer() {
                     className="bg-white/30 stroke-white/30 size-2 rounded-full"
                   />
                   {label}
-                </Link>
+                </button>
               ))}
             </div>
-            <div className="lg:border-t-0 border-t border-gray-300/60 pt-2 w-full">
+            <div className="lg:border-t-0 border-t border-gray-300/60 pt-2 w-full lg:w-auto">
               <p className="text-[12px]   text-white/30 text-center">
                 DagChain Summit 2026 · All rights reserved
               </p>

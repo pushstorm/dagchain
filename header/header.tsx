@@ -9,9 +9,9 @@ import MobileMenu from "./mobile-menu";
 import { StepperForm } from "@/components/stepper-form";
 
 export const menuLinks = [
-  { label: "Overview", link: "/" },
-  { label: "Why Join Dag Chain", link: "/" },
-  { label: "Be a Part of the Ecosystem", link: "/" },
+  { label: "Overview", link: "#hero" },
+  { label: "Why Join Dag Chain", link: "#join-dag" },
+  { label: "Be a Part of the Ecosystem", link: "#ecosystem" },
 ];
 
 const Header = () => {
@@ -77,7 +77,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="py-2 sticky top-0 z-[999] bg-white/80 backdrop-blur-xl">
+      <header className="py-2 sticky top-0 z-999 bg-white/80 backdrop-blur-xl">
         <div className="container flex justify-between items-center">
           <Logo className="w-36" />
           <Menu />

@@ -308,14 +308,14 @@ export function StepperForm({ onClose }: { onClose: () => void }) {
                 <div className="grid grid-cols-2 gap-3">
                   <FormField
                     label="First Name"
-                    placeholder="Rahil"
+                    placeholder="John"
                     value={form.firstName}
                     onChange={(v) => set("firstName", v)}
                     error={errors.firstName}
                   />
                   <FormField
                     label="Last Name"
-                    placeholder="Khan"
+                    placeholder="andrews"
                     value={form.lastName}
                     onChange={(v) => set("lastName", v)}
                     error={errors.lastName}
@@ -323,7 +323,7 @@ export function StepperForm({ onClose }: { onClose: () => void }) {
                 </div>
                 <FormField
                   label="Work Email"
-                  placeholder="rahil@company.com"
+                  placeholder="john@example.com"
                   type="email"
                   value={form.email}
                   onChange={(v) => set("email", v)}
@@ -332,7 +332,7 @@ export function StepperForm({ onClose }: { onClose: () => void }) {
                 <FormField
                   label="Phone Number"
                   placeholder="+1 (555) 000-0000"
-                  type="tel"
+                  type="number"
                   value={form.phone}
                   onChange={(v) => set("phone", v)}
                   error={errors.phone}

@@ -4,9 +4,9 @@ import { menuLinks } from "./header";
 const Menu = () => {
   return (
     <nav
-      className="hidden lg:flex items-center rounded-xl gap-1 p-1"
+      className="hidden border lg:flex items-center rounded-xl gap-1 p-1"
       style={{
-        border: "1px solid transparent",
+        
         background:
           "linear-gradient(white, white) padding-box, linear-gradient(to right, var(--color-1), var(--color-3), var(--color-2)) border-box",
       }}

@@ -110,7 +110,7 @@ export default function ProblemSolutionSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-28 px-6 sm:px-10 relative overflow-hidden"
+      className="py-24 lg:py-28 relative overflow-hidden"
       style={{ background: "#f0effe" }}
     >
       {/* Bg orb */}
@@ -134,7 +134,7 @@ export default function ProblemSolutionSection() {
         {/* Headline */}
         <h2
           ref={headlineRef}
-          className="font-nasalization tracking-tight leading-[1.15] mb-14 text-[2.8rem] text-gray-900"
+          className="font-nasalization tracking-tight leading-[1.15] mb-14 text-4xl lg:text-5xl text-gray-900"
         >
           <RevealLine delay={0} triggerRef={headlineRef}>
             The old internet wasn't built for AI.

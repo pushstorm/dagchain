@@ -5,7 +5,6 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-
   --color-1: #1e43f8;
   --color-2: #e7baf4;
   --color-3: #6b70f7;
@@ -48,7 +47,7 @@
   --color-foreground: var(--foreground);
   --font-sora: var(--font-sora);
   --font-inter: var(--font-inter);
-  
+
   --color-color-1: var(--color-1);
   --color-color-2: var(--color-2);
   --color-color-3: var(--color-3);
@@ -143,12 +142,11 @@ body {
   max-width: 96%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .dark {
-
   --background: oklch(0.145 0 0);
 
   --foreground: oklch(0.985 0 0);

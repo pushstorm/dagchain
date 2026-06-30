@@ -59,7 +59,7 @@ const TextDescription = () => {
     >
       <h2
         ref={headingRef}
-        className="text-4xl font-nasalization font-semibold tracking-tight"
+        className="text-4xl  lg:text-5xl font-nasalization font-semibold tracking-tight"
       >
         World's first ever Decentralized Blockchain Layer of the AI Economy
       </h2>

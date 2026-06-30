@@ -113,7 +113,7 @@ const ImageSlider = () => {
   return (
     <section className="mt-24">
       <div className="container mb-10">
-        <h2 ref={headingRef} className="text-5xl font-nasalization max-w-2xl">
+        <h2 ref={headingRef} className="text-4xl lg:text-5xl font-nasalization max-w-2xl">
           <RevealLine delay={0} triggerRef={headingRef}>
             How{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-color-1 via-color-3 to-color-2 tracking-tighter">

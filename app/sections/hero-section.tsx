@@ -14,13 +14,16 @@ const HeroSection = () => {
     let tween: gsap.core.Tween;
 
     const startAnimation = () => {
+      gsap.set(box, { transformOrigin: "top left" }); // ← add this
       gsap.set(video, { transformOrigin: "top left" });
+
       tween = gsap.fromTo(
         box,
         { scaleX: 0, transformOrigin: "top left" },
         {
           scaleX: 1,
           duration: 1.2,
+          delay: 0.3,
           ease: "power3.out",
           onUpdate: () => {
             const boxScale = gsap.getProperty(box, "scaleX") as number;
@@ -45,7 +48,10 @@ const HeroSection = () => {
 
   return (
     <section className="container">
-      <div ref={boxRef} className="h-[88dvh] w-full overflow-hidden relative">
+      <div
+        ref={boxRef}
+        className="h-[55dvh] lg:h-[88dvh] w-full overflow-hidden relative"
+      >
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"

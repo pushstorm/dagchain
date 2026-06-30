@@ -152,7 +152,7 @@ export default function ThemeTable() {
             </div>
             <h2
               ref={headingRef}
-              className="font-nasalization tracking-tight leading-tight text-gray-900 text-5xl "
+              className="font-nasalization tracking-tight leading-tight text-gray-900 text-4xl lg:text-5xl "
             >
               <RevealLine delay={0} triggerRef={headingRef}>
                 Five pillars of the

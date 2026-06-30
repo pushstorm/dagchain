@@ -39,6 +39,8 @@ export function StepperForm({ onClose }: { onClose: () => void }) {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [form, setForm] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -108,25 +110,43 @@ export function StepperForm({ onClose }: { onClose: () => void }) {
     animateStep(1, () => setStep(1));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const e: Partial<FormData> = {};
     if (!form.yearsExp) e.yearsExp = "Select one";
     if (!form.primaryActivity) e.primaryActivity = "Select one";
     if (Object.keys(e).length) return setErrors(e);
-    gsap.to(slideRef.current, {
-      y: -10,
-      opacity: 0,
-      duration: 0.22,
-      ease: "power2.in",
-      onComplete: () => {
-        setSubmitted(true);
-        gsap.fromTo(
-          slideRef.current,
-          { y: 14, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" },
-        );
-      },
-    });
+
+    setLoading(true);
+    setSubmitError("");
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
+      gsap.to(slideRef.current, {
+        y: -10,
+        opacity: 0,
+        duration: 0.22,
+        ease: "power2.in",
+        onComplete: () => {
+          setSubmitted(true);
+          gsap.fromTo(
+            slideRef.current,
+            { y: 14, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" },
+          );
+        },
+      });
+    } catch {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const PillBtn = ({

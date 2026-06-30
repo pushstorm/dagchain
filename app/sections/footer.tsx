@@ -8,6 +8,7 @@ import {
   TelegramLogoIcon,
   LinkedinLogoIcon,
   GlobeIcon,
+  CircleIcon,
 } from "@phosphor-icons/react";
 import Logo from "@/logo/logo";
 
@@ -134,7 +135,7 @@ export default function Footer() {
       <div className="container pt-16 pb-14">
         <h2
           ref={headingRef}
-          className="font-semibold text-5xl tracking-tight font-nasalization text-white"
+          className="font-semibold text-4xl lg:text-5xl tracking-tight font-nasalization text-white"
         >
           <RevealLine delay={0} triggerRef={headingRef}>
             The Infrastructure Behind the{" "}
@@ -150,15 +151,15 @@ export default function Footer() {
       {/* Middle */}
       <div className="border-t border-white/10">
         <div className="px-8 sm:px-16 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-          <Logo light />
+          <Logo light className="w-36" />
 
           {/* Social grid */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-5">
             {SOCIALS.map(({ icon, label, href }, id) => (
               <Link
                 key={id}
                 href={href}
-                className="flex items-center gap-3 transition-opacity duration-200 hover:opacity-70"
+                className="flex items-center gap-3 w-full transition-opacity duration-200 hover:opacity-70"
                 style={{
                   background: "#ffffff0f",
                   color: "white",
@@ -167,7 +168,6 @@ export default function Footer() {
                   fontSize: "11px",
                   fontWeight: 700,
                   letterSpacing: "0.07em",
-                  minWidth: "190px",
                   border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
@@ -187,8 +187,12 @@ export default function Footer() {
               <Link
                 key={label}
                 href={href}
-                className="text-[12px] text-white/30 transition-colors duration-150 hover:text-white/60"
+                className="text-[12px] text-white/30 flex items-center gap-2 transition-colors duration-150 hover:text-white/60"
               >
+                <CircleIcon
+                  weight="fill"
+                  className="bg-white/30 stroke-white/30 size-2 rounded-full"
+                />
                 {label}
               </Link>
             ))}

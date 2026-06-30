@@ -4,7 +4,7 @@ import { menuLinks } from "./header";
 const Menu = () => {
   return (
     <nav
-      className="flex items-center rounded-xl gap-1 p-1"
+      className="hidden lg:flex items-center rounded-xl gap-1 p-1"
       style={{
         border: "1px solid transparent",
         background:
@@ -14,9 +14,18 @@ const Menu = () => {
       {menuLinks.map((item, idx) => (
         <button
           key={idx}
-          className="relative cursor-pointer transition-all duration-300 font-inter px-3 py-2 rounded-lg text-sm
-            text-neutral-700 hover:text-white
-            hover:bg-linear-to-r hover:from-color-1 hover:via-color-3 hover:to-color-2"
+          className="relative cursor-pointer font-inter px-3 py-2 rounded-lg text-sm text-neutral-700 transition-colors"
+          onMouseEnter={(e) => {
+            const btn = e.currentTarget as HTMLButtonElement;
+            btn.style.background =
+              "linear-gradient(to right, var(--color-1), var(--color-3), var(--color-2))";
+            btn.style.color = "white";
+          }}
+          onMouseLeave={(e) => {
+            const btn = e.currentTarget as HTMLButtonElement;
+            btn.style.background = "";
+            btn.style.color = "";
+          }}
         >
           {item.label}
         </button>

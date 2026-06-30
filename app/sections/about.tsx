@@ -454,18 +454,6 @@ export default function FormModal() {
 
   return (
     <>
-      {/* Trigger button — drop this wherever you need it */}
-      <button
-        onClick={openModal}
-        className="px-7 py-3.5 rounded-xl text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
-        style={{
-          background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-          boxShadow: "0 4px 20px rgba(99,102,241,0.3)",
-        }}
-      >
-        Register Now
-      </button>
-
       {/* Modal */}
       {open && (
         <div

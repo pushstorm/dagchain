@@ -11,25 +11,35 @@ const HeroSection = () => {
     const video = videoRef.current;
     if (!box || !video) return;
 
-    gsap.set(video, { transformOrigin: "top left" });
+    let tween: gsap.core.Tween;
 
-    const tween = gsap.fromTo(
-      box,
-      { scaleX: 0, transformOrigin: "top left" },
-      {
-        scaleX: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        onUpdate: () => {
-          const boxScale = gsap.getProperty(box, "scaleX") as number;
-
-          gsap.set(video, { scaleX: 1 / Math.max(boxScale, 0.001) });
+    const startAnimation = () => {
+      gsap.set(video, { transformOrigin: "top left" });
+      tween = gsap.fromTo(
+        box,
+        { scaleX: 0, transformOrigin: "top left" },
+        {
+          scaleX: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          onUpdate: () => {
+            const boxScale = gsap.getProperty(box, "scaleX") as number;
+            gsap.set(video, { scaleX: 1 / Math.max(boxScale, 0.001) });
+          },
         },
-      },
-    );
+      );
+    };
+
+    // readyState >= 2 = HAVE_CURRENT_DATA (first frame available)
+    if (video.readyState >= 2) {
+      startAnimation();
+    } else {
+      video.addEventListener("loadeddata", startAnimation, { once: true });
+    }
 
     return () => {
-      tween.kill();
+      tween?.kill();
+      video.removeEventListener("loadeddata", startAnimation);
     };
   }, []);
 

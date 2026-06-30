@@ -9,15 +9,12 @@ function RevealLine({
   children,
   delay = 0,
   triggerRef,
-  className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
   triggerRef: React.RefObject<Element | null>;
-  className?: string;
 }) {
   const innerRef = useRef<HTMLSpanElement>(null);
-
   useEffect(() => {
     if (!innerRef.current || !triggerRef.current) return;
     gsap.set(innerRef.current, { y: "108%" });
@@ -38,10 +35,7 @@ function RevealLine({
   }, [delay, triggerRef]);
 
   return (
-    <span
-      className={`block overflow-hidden ${className}`}
-      style={{ display: "block" }}
-    >
+    <span style={{ display: "block", overflow: "hidden" }}>
       <span ref={innerRef} style={{ display: "block" }}>
         {children}
       </span>
@@ -102,6 +96,33 @@ export default function ProblemSolutionSection() {
           scrollTrigger: iv(card2Ref.current),
         },
       );
+
+      // Simple fade-up for body paragraphs — no hard line breaks
+      gsap.fromTo(
+        p1Ref.current,
+        { y: 16, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power3.out",
+          delay: 0.2,
+          scrollTrigger: iv(p1Ref.current),
+        },
+      );
+
+      gsap.fromTo(
+        p2Ref.current,
+        { y: 16, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power3.out",
+          delay: 0.3,
+          scrollTrigger: iv(p2Ref.current),
+        },
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -113,7 +134,6 @@ export default function ProblemSolutionSection() {
       className="py-24 lg:py-28 relative overflow-hidden"
       style={{ background: "#f0effe" }}
     >
-      {/* Bg orb */}
       <div
         className="pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full opacity-30"
         style={{
@@ -177,23 +197,16 @@ export default function ProblemSolutionSection() {
             </div>
 
             <div className="px-8 pt-7 pb-8 flex flex-col flex-1">
-              {/* div instead of p — prevents <span> inside <p> hydration error */}
               <div
                 ref={p1Ref}
                 className="text-gray-400 text-[1.05rem] leading-relaxed"
               >
-                <RevealLine delay={0} triggerRef={p1Ref}>
-                  Billions of AI agents are expected to automate businesses,
-                </RevealLine>
-                <RevealLine delay={0.08} triggerRef={p1Ref}>
-                  execute workflows, create content, and make decisions. Yet the
-                </RevealLine>
-                <RevealLine delay={0.16} triggerRef={p1Ref}>
-                  infrastructure they're running on was{" "}
-                  <strong className="font-semibold text-white">
-                    never designed for an AI-driven economy.
-                  </strong>
-                </RevealLine>
+                Billions of AI agents are expected to automate businesses,
+                execute workflows, create content, and make decisions. Yet the
+                infrastructure they're running on was{" "}
+                <strong className="font-semibold text-white">
+                  never designed for an AI-driven economy.
+                </strong>
               </div>
             </div>
           </div>
@@ -223,19 +236,6 @@ export default function ProblemSolutionSection() {
                   The Solution
                 </span>
               </div>
-              <div className="absolute bottom-5 left-6">
-                <span
-                  className="text-[11px] font-bold tracking-[0.06em] uppercase px-3 py-1.5 rounded-full"
-                  style={{
-                    background: "rgba(255,255,255,0.1)",
-                    border: "1px solid rgba(255,255,255,0.18)",
-                    color: "white",
-                    backdropFilter: "blur(10px)",
-                  }}
-                >
-                  ⚡ DagChain Infrastructure
-                </span>
-              </div>
             </div>
 
             <div className="px-8 pt-7 pb-8 flex flex-col flex-1">
@@ -243,20 +243,12 @@ export default function ProblemSolutionSection() {
                 ref={p2Ref}
                 className="text-indigo-200/80 text-[1.05rem] leading-relaxed"
               >
-                <RevealLine delay={0} triggerRef={p2Ref}>
-                  The next generation of applications won't simply need faster
-                </RevealLine>
-                <RevealLine delay={0.08} triggerRef={p2Ref}>
-                  transactions—they'll need{" "}
-                  <strong className="font-semibold text-white">
-                    an infrastructure capable of powering
-                  </strong>
-                </RevealLine>
-                <RevealLine delay={0.16} triggerRef={p2Ref}>
-                  <strong className="font-semibold text-white">
-                    autonomous intelligence at scale.
-                  </strong>
-                </RevealLine>
+                The next generation of applications won't simply need faster
+                transactions—they'll need{" "}
+                <strong className="font-semibold text-white">
+                  an infrastructure capable of powering autonomous intelligence
+                  at scale.
+                </strong>
               </div>
             </div>
           </div>
